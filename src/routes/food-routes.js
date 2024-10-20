@@ -27,5 +27,5 @@ foodRouter.post("/", createFoodItem);
 foodRouter.put("/update-food/:id", updateFoodItem);
 foodRouter.patch("/toggle-availability/:id", foodAvailability);
 foodRouter.delete("/delete-food/:id", deleteFoodItem);
-foodRouter.post("/additivies", addFoodAdditives);
+foodRouter.post("/additives/:id", addFoodAdditives);
 foodRouter.post("/tags", addFoodTags);

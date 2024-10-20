@@ -122,7 +122,7 @@ export const updateFoodItem = async (req, res) => {
       return res.status(404).json({ message: "Food item not found" });
     }
 
-    return res.status(200).json({ message: "Food item deleted successfully." });
+    return res.status(200).json({ message: "Food item updated successfully." });
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({ message: error.message });
@@ -171,7 +171,7 @@ export const foodAvailability = async (req, res) => {
 
 export const addFoodTags = async (req, res) => {
   const foodId = req.params.id;
-  const { tag } = req.body.tags;
+  const { tag } = req.body;
 
   try {
     const food = await Food.findById(foodId);
@@ -195,7 +195,7 @@ export const addFoodTags = async (req, res) => {
 
 export const addFoodAdditives = async (req, res) => {
   const foodId = req.params.id;
-  const { additive } = req.body.additives;
+  const { additive } = req.body;
 
   try {
     const food = await Food.findById(foodId);
@@ -203,11 +203,12 @@ export const addFoodAdditives = async (req, res) => {
     if (!food) {
       return res.status(404).json({ message: "Food item not found" });
     }
-    if (food.foodTags.additivies(additive)) {
-      return res.status(400).json({ message: "Tag already exists." });
+
+    if (food.additives.includes(additive)) {
+      return res.status(400).json({ message: "Additive already exists." });
     }
 
-    food.foodAdditives.push(tag);
+    food.additives.push(additive);
     await food.save();
 
     res.status(201).json({ message: "Food additive added" });
