@@ -5,6 +5,7 @@ import { authRouter } from "./routes/auth-routes.js"
 import { userRouter } from "./routes/user-routes.js"
 import { restaurantRouter } from "./routes/restaurant-routes.js"
 import { categoryRouter } from "./routes/category-routes.js"
+import { foodRouter } from "./routes/food-routes.js"
 
 dotenv.config()
 
@@ -28,6 +29,9 @@ app.use("/api/v1/restaurants", restaurantRouter)
 
 // category routes    
 app.use("/api/v1/categories", categoryRouter)
+
+// food routes
+app.use("/api/v1/foods", foodRouter)
 
 // database connection
 dbConnect()

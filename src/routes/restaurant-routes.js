@@ -1,5 +1,6 @@
 import { Router } from "express"
 import { createRestaurant, deleteRestaurant, getAllRestaurants, getRandomRestaurants, getRestaurant, serviceAvailability, updateRestaurant } from "../controllers/restaurant-controller.js"
+import { verifyAdmin } from "../middleware/auth-middleware.js"
 
 export const restaurantRouter = Router()
 
