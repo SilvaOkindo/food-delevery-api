@@ -8,6 +8,8 @@ import { categoryRouter } from "./routes/category-routes.js"
 import { foodRouter } from "./routes/food-routes.js"
 import { cartRouter } from "./routes/cart-routes.js"
 import { addressRouter } from "./routes/address-routes.js"
+import { orderRouter } from "./routes/order-routes.js"
+import { driverRouter } from "./routes/driver-routes.js"
 
 dotenv.config()
 
@@ -40,6 +42,12 @@ app.use("/api/v1/cart", cartRouter)
 
 //address routes
 app.use("/api/v1/address", addressRouter)
+
+// order routes
+app.use("/api/v1/orders", orderRouter)
+
+// driver routes
+app.use("/api/v1/driver", driverRouter)
 
 // database connection
 dbConnect()
